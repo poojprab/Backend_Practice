@@ -1,11 +1,29 @@
 const admin = require ('firebase-admin');
-const express = require("express")
+const express = require("express");
 const bodyParser = require('body-parser');
-const firebase = require('firebase')
+
+// used for server side applications
+// code is executed on the server
+const serviceAccount = require('./firebase-p-key.json');
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: 'gs://firebasics-3532a.appspot.com',
+});
 
 const app = express();
+app.use(bodyParser.json());
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const db = admin.firestore();
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+
+// used for client side applications
+// code is executed on the user's browser
+/*
 const firebaseConfig = {
     apiKey: "AIzaSyA_9WNNimm05RxfDDzJBkr5HzJOVH91kSQ",
     authDomain: "firebasics-3532a.firebaseapp.com",
@@ -17,6 +35,4 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-
+*/
