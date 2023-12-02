@@ -1,5 +1,5 @@
 const express = require("express");
-const StudentController = require("../controller/studentController");
+const ProfessorController = require("../controller/professorController");
 
 const router = express.Router();
 
@@ -12,24 +12,20 @@ the information needed to create or update a resource on the server./*
 router.post("/", async (req, res) => {
     try {
         const {
-            studentID,
+            professorID,
             lName,
             fName,
-            major,
-            year,
             universityID
         } = req.body;
         // getting the information about a student they want created
-        const newStudent = await StudentController.createStudent(
-            studentID,
+        const newProfessor = await ProfessorController.createProfessor(
+            professorID,
             lName,
             fName,
-            major,
-            year,
             universityID
         );
         // creating that student and converting it into json formatting
-        res.json(newStudent);
+        res.json(newProfessor);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -38,14 +34,14 @@ router.post("/", async (req, res) => {
 // get method
 /*  */
 
-router.get("/:studentID", async (req, res) => {
+router.get("/:professorID", async (req, res) => {
     try {
-        const { studentID } = req.params;
-        const student = await StudentController.getStudentByID(studentID);
-        if (student) {
-            res.json(student);
+        const { profesorID } = req.params;
+        const professor = await ProfessorController.getProfessorByID(profesorID);
+        if (professor) {
+            res.json(professor);
         } else {
-            res.status(404).json({ error: "Student not found" });
+            res.status(404).json({ error: "Professor not found" });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
