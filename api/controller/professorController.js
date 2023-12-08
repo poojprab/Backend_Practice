@@ -4,13 +4,11 @@ const Professor = require("../model/professorModel"); // Import the Patient mode
 class ProfessorController {
     // createStudent function, adds a new student to the table
     static async createProfessor(
-        professorID,
         lName,
         fName,
         universityID
     ) {
         const newProfessor = new Professor(
-            professorID,
             lName,
             fName,
             universityID

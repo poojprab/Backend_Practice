@@ -12,7 +12,6 @@ the information needed to create or update a resource on the server./*
 router.post("/", async (req, res) => {
     try {
         const {
-            studentID,
             lName,
             fName,
             major,
@@ -21,7 +20,6 @@ router.post("/", async (req, res) => {
         } = req.body;
         // getting the information about a student they want created
         const newStudent = await StudentController.createStudent(
-            studentID,
             lName,
             fName,
             major,

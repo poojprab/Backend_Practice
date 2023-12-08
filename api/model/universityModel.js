@@ -9,7 +9,6 @@ const db = admin.firestore();
 class University {
     // fields for Student Object
     constructor(
-        universityID,
         name,
         rank
     ) {
@@ -48,7 +47,6 @@ class University {
                 //getting the data
                 const uniData = uniSnapshot.data();
                 return new University(
-                    uniData.universityID,
                     uniData.name,
                     uniData.rank
                 );

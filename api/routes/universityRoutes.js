@@ -12,13 +12,11 @@ the information needed to create or update a resource on the server./*
 router.post("/", async (req, res) => {
     try {
         const {
-            universityID,
             name,
             rank
         } = req.body;
         // getting the information about a student they want created
         const newUni = await UniversityController.createUni(
-            universityID,
             name,
             rank
         );

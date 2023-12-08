@@ -56,7 +56,6 @@ class Student {
                 //getting the data
                 const studentData = studentSnapshot.data();
                 return new Student(
-                    studentData.studentID,
                     studentData.fName,
                     studentData.lName,
                     studentData.major,

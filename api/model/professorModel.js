@@ -9,7 +9,6 @@ const db = admin.firestore();
 class Professor {
     // fields for Student Object
     constructor(
-        professorID,
         fName,
         lName,
         universityID
@@ -51,7 +50,6 @@ class Professor {
                 //getting the data
                 const profData = profSnapshot.data();
                 return new Professor(
-                    profData.professorID,
                     profData.fName,
                     profData.lName,
                     profData.universityID
